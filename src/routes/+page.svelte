@@ -26,7 +26,7 @@
         switch(storage){
             case null:
                 choose()
-                document.getElementById(`mainin`).focus();c
+                document.getElementById(`mainin`).focus();
                 break;
             default:
                 input = storage;

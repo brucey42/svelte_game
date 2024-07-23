@@ -17,7 +17,7 @@ export const cycle = (input,choice) => {
                 default:
                     checking(input);
                     rltns(input);
-                    input.narr = narrs[out.loc]?.[out.out] ?? `error`;
+                    input.narr = narrs[out.loc](out.out,input.party) ?? `error`;
                     break;
             }
             break;
