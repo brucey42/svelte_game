@@ -40,7 +40,13 @@
 
 
 <nav>
-    <a href="/">&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
+    <a href="/" on:click={() => {
+        sessionStorage.removeItem(`input`);
+        input = {
+            narr:menu
+        };
+        choose();
+    }}>&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
     |
     <a href="/">&nbsp;&nbsp;Game&nbsp;&nbsp;</a>
     |
