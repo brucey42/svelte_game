@@ -1,0 +1,138 @@
+nav {
+    display: flex;
+    font-size: 2em;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    align-items: center;
+    margin-bottom: 50px;
+    word-spacing: 0.25em;
+    color: black;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    button {
+        color: inherit;
+        font-size: inherit;
+        background: none;
+        border: none;
+        text-decoration: inherit;
+    }
+}
+
+body {
+    color:black;            
+    background: url("/backgrounds/bpyreefmrhyz.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+div {
+    .inputBox {
+        border-style: double;
+        background-color: black;
+        color: white;
+        height: 50px;
+        width: 90%;
+        font-size: 1.75em;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .inputText {
+        width: 7%;
+        height: inherit;
+        float: left;
+        font-size: inherit;
+        display: flex;
+        align-items: center;
+        padding-left: 5px;
+    }
+    input[type=text] {
+        background-color: black;
+        width: 86%;
+        height: 45px;
+        color: white;
+        font-size: inherit;
+        float: left;
+    }
+    button[type=submit] {
+            background-color: red;
+            width: 6.4%;
+            float: right;
+            height: 50px;
+            color: black;
+            font-size: inherit;
+            h1 {
+                font-size: inherit;
+                font-weight: lighter;
+                margin-bottom: auto;
+                margin-top: 0%;
+            }
+    }
+    .main {
+        display: block;
+        border-style: solid;
+        border-width: 1px;
+        height: 100%;
+        padding: 10px;
+        width: 80%;
+        height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        background-color: rgba(0, 0, 0, 0.65);
+        color: cyan;
+        .menu {
+            border-style: solid;
+            border-color: white;
+            height: 75%;
+            margin-bottom: 1%;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .narr {
+            border-style: solid;
+            border-color: white;
+            height: 75%;
+            margin-bottom: 1%;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .bottom {
+            border-style: solid;
+            border-color: white;
+            height: 20%;
+            overflow: auto;
+            display: flex;
+            padding-left: 5%;
+            align-items: center;
+            font-size: 1.5em;
+            color: white;
+        }
+    }
+}
+
+form {
+    .inputForm {
+        display: flex;
+        align-items: center;
+        border-style: double;
+        background-color: black;
+        color: white;
+        height: 50px;
+        width: 90%;
+        font-size: 1.75em;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
