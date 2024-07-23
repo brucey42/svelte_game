@@ -16,7 +16,7 @@
         lowtext = feed.narr.choices ?? ``;
     }
 
-    export const choose = (choice) => {
+    const choose = (choice) => {
         input = cycle(input,choice);
         set(input);
     }
@@ -37,7 +37,6 @@
     })
 
 </script>
-
 
 <nav>
     <a href="/" on:click={() => {

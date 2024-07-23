@@ -1,5 +1,14 @@
+<script>
+    let input = sessionStorage.getItem(`input`);
+
+
+</script>
+
+
 <nav>
-    <a href="/">&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
+    <a href="/" on:click={() => {
+        sessionStorage.removeItem(`input`);
+    }}>&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
     |
     <a href="/">&nbsp;&nbsp;Game&nbsp;&nbsp;</a>
     |
