@@ -1,15 +1,15 @@
 <script>
     import { onMount } from "svelte";
     import { cycle } from '../lib/js/scripts/mainjs';
-    import { menu } from '../lib/js/narrs/mmenu';
     import { reset } from '../lib/js/scripts/little_calls';
-
+    import { menu } from '../lib/js/narrs/mmenu';
+    
     let input = {
         narr:menu
     };
     let wintext = ``;
     let lowtext = ``;
-    let playerin;
+    let playerin = ``;
 
     const set = (feed) => {
         wintext = feed.narr.text;
@@ -26,15 +26,29 @@
         switch(storage){
             case null:
                 choose()
+                document.getElementById(`mainin`).focus();c
                 break;
             default:
                 input = storage;
                 set(input)
+                document.getElementById(`mainin`).focus();
                 break;
         }
     })
 
 </script>
+
+
+<nav>
+    <a href="/">&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
+    |
+    <a href="/">&nbsp;&nbsp;Game&nbsp;&nbsp;</a>
+    |
+    <a href="/char" on:click={() => {
+        sessionStorage.setItem(`input`,JSON.stringify(input));
+        }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>
+</nav>
+
 
 <div id="main" class="main">
     <div id="upperwindow" class="{input.narr.css}">
