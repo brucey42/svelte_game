@@ -36,49 +36,53 @@
                 set(input)
                 document.getElementById(`mainin`).focus();
                 break;
-        }
-    })
+        };
+    });
 
 </script>
 
-<nav>
-    <a href="/" on:click={() => {
-        sessionStorage.removeItem(`input`);
-        input = {
-            narr:menu
-        };
-        choose();
-    }}>&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
-    |
-    <a href="/">&nbsp;&nbsp;Game&nbsp;&nbsp;</a>
-    |
-    <a href="/char" on:click={() => {
-        sessionStorage.setItem(`input`,JSON.stringify(input));
-        }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>
-</nav>
+<div class ="body">
+
+    <nav>
+        <a href="/" on:click={() => {
+            sessionStorage.removeItem(`input`);
+            input = {
+                narr:menu
+            };
+            choose();
+        }}>&nbsp;&nbsp;Main Menu&nbsp;&nbsp;</a>
+        |
+        <a href="/">&nbsp;&nbsp;Game&nbsp;&nbsp;</a>
+        |
+        <a href="/char" on:click={() => {
+            sessionStorage.setItem(`input`,JSON.stringify(input));
+            }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>
+    </nav>
 
 
-<div id="main" class="main">
-    <div id="upperwindow" class="{input.narr.css}">
-        <h1>{@html wintext}</h1>
+    <div id="main" class="main">
+        <div id="upperwindow" class="{input.narr.css}">
+            <h1>{@html wintext}</h1>
+        </div>
+        <div id="lowerwindow" class="bottom">
+            {@html lowtext}
+        </div>
     </div>
-    <div id="lowerwindow" class="bottom">
-        {@html lowtext}
-    </div>
-</div>
 
-<div id="inputBox " class="inputBox">
-    <div id="inputText" class="inputText">
-        Your Input:
+    <div id="inputBox " class="inputBox">
+        <div id="inputText" class="inputText">
+            Your Input:
+        </div>
+        <input id="mainin" type="text" bind:value={playerin} on:keyup={e => {e.key.toLowerCase() == `enter` ? (() => {
+            choose(playerin);
+            reset('mainin');
+            })() : ``}}>
+        <button id="playersub" class="playersub" type="submit" on:click={() => {
+            choose(playerin.toLowerCase());
+            reset('mainin');
+        }}>
+        <h1>Submit</h1>
+        </button>
     </div>
-    <input id="mainin" type="text" bind:value={playerin} on:keyup={e => {e.key.toLowerCase() == `enter` ? (() => {
-        choose(playerin);
-        reset('mainin');
-        })() : ``}}>
-    <button id="playersub" class="playersub" type="submit" on:click={() => {
-        choose(playerin.toLowerCase());
-        reset('mainin');
-    }}>
-    <h1>Submit</h1>
-    </button>
+    
 </div>

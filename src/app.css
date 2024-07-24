@@ -13,24 +13,26 @@ nav {
         text-decoration: none;
         color: inherit;
     }
-    button {
-        color: inherit;
-        font-size: inherit;
-        background: none;
-        border: none;
-        text-decoration: inherit;
-    }
+}
+
+html {
+    height: 100%;
 }
 
 body {
-    color:black;            
-    background: url("/backgrounds/bpyreefmrhyz.png");
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+    height: 100%;
+    margin: 0;
 }
 
-div {
+div { 
+    .body {
+        height: 100%;
+        width: 100%;
+        background: url("/backgrounds/bpyreefmrhyz.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
     .inputBox {
         border-style: double;
         background-color: black;
