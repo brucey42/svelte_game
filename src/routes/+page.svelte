@@ -25,7 +25,10 @@
         const storage = JSON.parse(sessionStorage.getItem(`input`));
         switch(storage){
             case null:
-                choose()
+                input = {
+                    narr:menu
+                };
+                choose();
                 document.getElementById(`mainin`).focus();
                 break;
             default:
