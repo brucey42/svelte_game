@@ -1,19 +1,16 @@
 <script>
     export const name = `MusicPlayer`;
     export let src;
-    const player = document.getElementById("audioplayer");
-    export const toggle_music_state = (newstate) => {
-        if(newstate){
-            player.play();
-        }else{
-            player.pause
-        }
+
+    export const toggle_music_play = (bool) => {
+        bool ? `` : ``;
     }
+
 </script>
 
-<audio 
-id="audiplayer"
+<audio
 autoplay
+controls
 loop>
 <source {src}>
 </audio>

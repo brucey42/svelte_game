@@ -11,7 +11,6 @@
     let wintext = ``;
     let lowtext = ``;
     let playerin = ``;
-    let playstate;
 
     const set = (feed) => {
         wintext = feed.narr.text;
@@ -76,7 +75,6 @@
             Your Input:
         </div>
         <input id="mainin" type="text"
-        on:focus={() => playstate = true}
         bind:value={playerin}
         on:keyup={e => {e.key.toLowerCase() == `enter` ? (() => {
             choose(playerin);
@@ -89,11 +87,6 @@
         <h1>Submit</h1>
         </button>
     </div>
-    <button on:click={() => {
-        playstate = playstate ? false : true;
-    }}>
-        {`Push to ${playstate ? `Pause` : `Play`}`}
-    </button>
     <Musicplayer
     src = {input.narr.music}
      />
