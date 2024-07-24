@@ -3,8 +3,9 @@
     import { cycle } from '../lib/js/scripts/mainjs';
     import { reset } from '../lib/js/scripts/little_calls';
     import { menu } from '../lib/js/narrs/mmenu';
-    
-    let input = {
+    import Musicplayer from "../lib/components/musicplayer.svelte";
+   
+    export let input = {
         narr:menu
     };
     let wintext = ``;
@@ -56,7 +57,7 @@
         |
         <a href="/char" on:click={() => {
             sessionStorage.setItem(`input`,JSON.stringify(input));
-            }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>
+        }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>  
     </nav>
 
 
@@ -84,5 +85,8 @@
         <h1>Submit</h1>
         </button>
     </div>
-    
+    <Musicplayer
+    src={input.narr.music}
+     />
+    <button  />
 </div>

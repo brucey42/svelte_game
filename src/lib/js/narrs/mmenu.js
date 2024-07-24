@@ -15,5 +15,6 @@ export const menu = {
         loc:`intro`,
         out:`intro`
     },
-    css:`menu`
-}
+    css:`mmenu`,
+    music:`../../music/edgar_hopp-gravitated_(royalty_free_music).mp3`
+};
