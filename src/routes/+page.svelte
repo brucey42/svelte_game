@@ -3,14 +3,17 @@
     import { cycle } from '../lib/js/scripts/mainjs';
     import { reset } from '../lib/js/scripts/little_calls';
     import { menu } from '../lib/js/narrs/mmenu';
+
     import Musicplayer from "../lib/components/musicplayer.svelte";
+    import Mainwindow from "../lib/components/mainwindow.svelte";
    
-    export let input = {
+    let input = {
         narr:menu
     };
     let wintext = ``;
     let lowtext = ``;
     let playerin = ``;
+    let playstate;
 
     const set = (feed) => {
         wintext = feed.narr.text;
@@ -43,7 +46,7 @@
 </script>
 
 <div class ="body">
-
+    <slot />
     <nav>
         <a href="/" on:click={() => {
             sessionStorage.removeItem(`input`);
@@ -60,7 +63,7 @@
         }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>  
     </nav>
 
-
+    <Mainwindow {input} {playerin} />
     <div id="main" class="main">
         <div id="upperwindow" class="{input.narr.css}">
             <h1>{@html wintext}</h1>
@@ -87,7 +90,8 @@
         <h1>Submit</h1>
         </button>
     </div>
-    <Musicplayer
-    src = {input.narr.music}
-     />
+        <Musicplayer
+        src = {input.narr.music}
+        {playstate}
+        />
 </div>
