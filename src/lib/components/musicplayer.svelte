@@ -3,19 +3,20 @@
 
     export const name = `MusicPlayer`;
     export let src;
-    export let playstate;
-    $: ((thing) => {
-        if(thing){
-            audio?.play() ?? ``;
+
+    $: playstate = (() => {
+        if(playstate){
+            audio?.play();
+            return(true);
         }
         else{
-            audio?.pause() ?? ``;
+            audio?.pause();
+            return(false);
         }
-    })(playstate);
+    })();
 
     let audio;
-    
-    onMount(playstate = true)
+
 </script>
 
 <button class="player" on:click={() => {
@@ -24,7 +25,12 @@
 Toggle Music
 </button>
 
-<audio bind:this = {audio} {src} autoplay loop />
+<audio
+bind:this = {audio}
+{src}
+autoplay
+loop
+/>
 
 <style>
     button {

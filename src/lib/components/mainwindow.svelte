@@ -1,18 +1,43 @@
 <script>
     import { cycle } from '../js/scripts/mainjs';
+    import { menu } from '../js/narrs/mmenu';
+    import { onMount } from 'svelte';
+
     const name = "MainWindow";
     let uppertext = ``;
     let lowertext = ``;
+
     export let playerin = ``;
-    export let input;
+    let input = {
+        narr:menu
+    };
     const set = (feed) => {
         uppertext = feed.narr.text;
         lowertext = feed.narr.choices ?? ``;
-    }
+    };
     const choose = (choice) => {
         input = cycle(input,choice);
         set(input);
-    }
+    };
+
+    onMount(() => {
+        const storage = JSON.parse(sessionStorage.getItem(`input`));
+        switch(storage){
+            case null:
+                input = {
+                    narr:menu
+                };
+                choose();
+                document.getElementById(`mainin`).focus();
+                break;
+            default:
+                input = storage;
+                set(input)
+                document.getElementById(`mainin`).focus();
+                break;
+        };
+    });
+
 </script>
 
 <div id="mainwin" class="mainwin">
@@ -36,6 +61,7 @@
         margin-right: auto;
         margin-bottom: 3%;
         background-color: rgb(0, 0, 0, 0.65);
+        color: cyan;
     }
     .lowerwindow {
         border-style: solid;
@@ -46,7 +72,7 @@
         padding-left: 5%;
         align-items: center;
         font-size: 1.5em;
-        columns: white;
+        color: wheat;
     }
     .mmenu {
         border-style: solid;

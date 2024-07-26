@@ -6,6 +6,7 @@
 
     import Musicplayer from "../lib/components/musicplayer.svelte";
     import Mainwindow from "../lib/components/mainwindow.svelte";
+    import Playerinput from "../lib/components/playerinput.svelte";
    
     let input = {
         narr:menu
@@ -63,7 +64,7 @@
         }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>  
     </nav>
 
-    <Mainwindow {input} {playerin} />
+    <Mainwindow {playerin} />
     <div id="main" class="main">
         <div id="upperwindow" class="{input.narr.css}">
             <h1>{@html wintext}</h1>
