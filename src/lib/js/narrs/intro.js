@@ -3,7 +3,7 @@ import { base } from './base.js'
 export const intro = (out,party) => {
     const intros = {
         intro:{
-            ...base,
+            ...base.narr,
             text:`<p>The soft rumble of breaking waves and distant seabird squawking gently breaks your slumber. You groggily blink the sleep from your eyes, familiar trappings of your bedroom swimming into view as the hazy brightness recedes. You shiver slightly, searching hand groping beneath fluttering curtains to push the ajar window shut, closing it with a dull bump and silencing the external ambiance. The mild amusement you feel at falling asleep with it open despite the cold turns rapidly to regret as you extract yourself from the bed covers, shivering, and stretch, skeleton cracking satisfyingly in multiple places</p>`,
             choices:`<p>You:<br><br>1) Go outside<br>2) Explore your room</p>`,
             out1:{
@@ -16,7 +16,7 @@ export const intro = (out,party) => {
             }
         },
         hallway:{
-            ...base,
+            ...base.narr,
             text:`<p>You find yourself on the narrow upstairs landing. The floor is rough along the edges but years of continuous usage have sanded the centre as though a guild carpenter had cut and placed it and not your late farther, shortly before you were born. With this thought in mind, your eyes wander to the door directly opposite yours. It is wooden, like the floor, but this was made by guildsmen; the craftsmanship of the long swirling floral carvings and delicate, ornate golden filigree spelling your parents' names still proud after all this time, if a bit tarnished in the case of the latter. By rights that room, like the rest of the house, is yours now, but you haven't had the strength to enter since they died.</p>`,
             choices:`<p>You:<br><br>1) Go downstairs<br>2) Return to your room</p>`,
             out1:{
@@ -139,7 +139,7 @@ export const intro = (out,party) => {
             }
         },
         dsnochar:{
-            ...base,
+            ...base.narr,
             text:`"Aggghhhhh!!!" shrieks Samantha, looking up from the large cauldron she is stirring at the centre of the kitchen, "go get some clothes on!!!!!"
             
             "Sorry," you mumble, "didn't realise your were here."
@@ -166,7 +166,7 @@ export const intro = (out,party) => {
             }
         },
         dsnochar_sam:{
-            ...base,
+            ...base.narr,
             text:`Samantha slams her wooden spoon against the rim of the cauldron so hard that you hear the wood splinter. "What is wrong with you!?" she snaps, shocked bluster of before come full anger. Even for her normal overbearing matriarchal demeanor, this seems a bit much, and you consider that something deeper might be troubling her.</p>`,
             choices:`<p>You:<br><br>1) Try and talk to her<br>2) Return to your room</p>`,
             out1:{
@@ -184,7 +184,7 @@ export const intro = (out,party) => {
             }
         },
         dsnochar_samsal:{
-            ...base,
+            ...base.narr,
             text:`<p>Really now, this is getting ridiculous!" Samantha shakes her head incredulously, having reached the exasperation stage of irritation, "I know you don't normally wander 'round half dressed, have you just chosen today to be weird?"
         
             The Count, observing you with an amused smirk, remarks "I find myself agreeing with the young lady this time, you do seem to be a rather odd fellow." He sighs, then continues, "but that is, fortunately, immaterial to the reason I am here, if you'd like to know?</p>"`,
@@ -260,7 +260,7 @@ export const intro = (out,party) => {
             }
         },
         samnak:{
-            ...base,
+            ...base.narr,
             text:`<p>"Don't you think you're overrea-" you begin${`bedroom` in (party?.mainchar?.rltns?.samantha ?? {}) ? ` warily, keenly aware you might be the next target for the spoon` : ``},before a man's voice interject softly.
             
             "I believe she is acting for my benefit."
@@ -304,7 +304,7 @@ export const intro = (out,party) => {
             }
         },
         dschar:{
-            ...base,
+            ...base.narr,
             text:`"About time you got up!" Samantha scolds you the second you enter into view of the kitchen. She is at its centre, stirring a large cauldron of stew over some pyrysts. You have known each other for many years and, while she technically has her own place, she spends so much time here that she might as well be your roommate - even having converted a downstairs spare-room into a makeshift bedroom for herself.
             
             "Some of us appreciate the art of sleep, philistines like yourself wouldn't understand, getting up at the crack of dawn," your tone is one of friendly mockery, but you sense a deeper meaning to her scorn - she isn't normally bothered by your lying in. You know from experience that being obtuse will get her to spill quickest, but she is spared the light verbal teasing.
@@ -350,7 +350,7 @@ export const intro = (out,party) => {
             }
         },
         bedroom:{
-            ...base,
+            ...base.narr,
             text:`Your bedroom is cozy and, with the exception of a significantly larger bed, has remained largely unchanged since childhood. A small pile of dirty clothes lie upon a chair besides a plain but hard-wearing wardrobe older than you. Beside that, directly opposite your bed, is a long mirror. It stands perpendicular to a desk that also serves as your bedside table, above which sits the window you shut earlier.`,
             choices:`<p>You:<br><br>1) Leave<br>2) Get dressed</p>`,
             out1:{

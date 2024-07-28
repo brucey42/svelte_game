@@ -1,17 +1,23 @@
 <script>
     export const name = `MusicPlayer`;
-    export let src;
+    
+    import { musicStore } from "../js/scripts/store";
+    import { playState } from "../js/scripts/store";
 
-    export let playstate = null;
+    let src;
+    let playing;
 
-    $: playstate = (() => {
-        if(playstate){
-            audio?.play();
-            return(true);
-        }
-        else{
-            audio?.pause();
-            return(false);
+    musicStore.subscribe(value => src = value);
+    playState.subscribe(value => playing = value);
+
+    $: (() => {
+        if(src){
+            if(playing){
+                audio?.play();
+            }
+            else{
+                audio?.pause();
+            }
         }
     })();
 
@@ -20,7 +26,7 @@
 </script>
 
 <button class="player" on:click={() => {
-    playstate = playstate ? false : true;
+    playing ? playState.set(false) : playState.set(true);
 }}>
 Toggle Music
 </button>

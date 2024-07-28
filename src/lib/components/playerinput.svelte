@@ -1,20 +1,28 @@
 <script>
     import Mainwindow from "./mainwindow.svelte";
 
+    import { musicStore } from '../js/scripts/store';
+    import { playState } from "../js/scripts/store";
     import { reset } from "../js/scripts/little_calls";
-    import { cycle } from "../js/scripts/mainjs";
     import { menu } from "../js/narrs/mmenu";
     import { onMount } from "svelte";
+    import { cycle } from '../js/scripts/mainjs';
 
     const name = "PlayerInput";
 
-    let input = {
+    export let input = {
         narr:menu
     }
 
-    $: css = input?.narr?.css ?? `menu`;
-    $: uppertext = input?.narr?.text ?? ``;
-    $: lowertext = input?.narr?.choices ?? ``;
+    $: css = input.narr.css;
+    $: uppertext = input.narr.text;
+    $: lowertext = input.narr.choices ?? ``;
+    $: musicStore.set(input.narr.music);
+
+    let musiccheck;
+    
+    playState.subscribe(value => musiccheck = value);
+
 
     const choose = (choice) => {
         cycle(input,choice);
@@ -34,7 +42,6 @@
                 break;
             default:
                 input = storage;
-                set(input)
                 document.getElementById(`mainin`).focus();
                 break;
         };
@@ -49,9 +56,16 @@
         Your Input:
     </div>
     <input id="mainin" type="text"
+    on:focus={() => {
+        switch(musiccheck){
+            case null:
+                playState.set(true);
+                break;
+        }
+    }}
     bind:value={playerin}
     on:keyup={
-        e => e.key.toLowerCase() == `enter` ? (() => {
+        (key) => key.key.toLowerCase() == `enter` ? (() => {
             choose(playerin.toLowerCase());
             reset(`mainin`);
         })() : ``} />
