@@ -15,6 +15,9 @@
     let lowtext = ``;
     let playerin = ``;
     let playstate;
+    let uppertext;
+    let lowertext;
+    let css;
 
     const set = (feed) => {
         wintext = feed.narr.text;
@@ -64,35 +67,9 @@
         }}>&nbsp;&nbsp;Character&nbsp;&nbsp;</a>  
     </nav>
 
-    <Mainwindow {playerin} />
-    <div id="main" class="main">
-        <div id="upperwindow" class="{input.narr.css}">
-            <h1>{@html wintext}</h1>
-        </div>
-        <div id="lowerwindow" class="bottom">
-            {@html lowtext}
-        </div>
-    </div>
-
-    <div id="inputBox " class="inputBox">
-        <div id="inputText" class="inputText">
-            Your Input:
-        </div>
-        <input id="mainin" type="text"
-        bind:value={playerin}
-        on:keyup={e => {e.key.toLowerCase() == `enter` ? (() => {
-            choose(playerin);
-            reset('mainin');
-            })() : ``}} />
-        <button id="playersub" class="playersub" type="submit" on:click={() => {
-            choose(playerin.toLowerCase());
-            reset('mainin');
-        }}>
-        <h1>Submit</h1>
-        </button>
-    </div>
-        <Musicplayer
-        src = {input.narr.music}
-        {playstate}
-        />
+    <Playerinput />
+    <Musicplayer
+    src = {input.narr.music}
+    {playstate}
+    />
 </div>

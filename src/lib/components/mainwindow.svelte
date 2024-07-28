@@ -1,47 +1,13 @@
 <script>
-    import { cycle } from '../js/scripts/mainjs';
-    import { menu } from '../js/narrs/mmenu';
-    import { onMount } from 'svelte';
+    export let uppertext = ``;
+    export let lowertext = ``;
+    export let css = ``;
 
     const name = "MainWindow";
-    let uppertext = ``;
-    let lowertext = ``;
-
-    export let playerin = ``;
-    let input = {
-        narr:menu
-    };
-    const set = (feed) => {
-        uppertext = feed.narr.text;
-        lowertext = feed.narr.choices ?? ``;
-    };
-    const choose = (choice) => {
-        input = cycle(input,choice);
-        set(input);
-    };
-
-    onMount(() => {
-        const storage = JSON.parse(sessionStorage.getItem(`input`));
-        switch(storage){
-            case null:
-                input = {
-                    narr:menu
-                };
-                choose();
-                document.getElementById(`mainin`).focus();
-                break;
-            default:
-                input = storage;
-                set(input)
-                document.getElementById(`mainin`).focus();
-                break;
-        };
-    });
-
 </script>
 
 <div id="mainwin" class="mainwin">
-    <div id="upperwindow" class="{input.narr.css}">
+    <div id="upperwindow" class="{css}">
         <h1>{@html uppertext}</h1>
     </div>
     <div id="lowerwindow" class="lowerwindow">

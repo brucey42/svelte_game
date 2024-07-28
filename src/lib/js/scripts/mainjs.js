@@ -1,6 +1,7 @@
 import { narrs } from "../narrs/narrs";
 import { checking } from "./check";
 import { rltns } from "./rltns";
+import { cheeky } from "./little_calls";
 
 export const cycle = (input,choice) => {
     input.ask = choice;

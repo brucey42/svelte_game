@@ -1,8 +1,8 @@
 <script>
-    import { onMount } from "svelte";
-
     export const name = `MusicPlayer`;
     export let src;
+
+    export let playstate = null;
 
     $: playstate = (() => {
         if(playstate){
