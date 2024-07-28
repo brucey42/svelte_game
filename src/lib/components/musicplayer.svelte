@@ -6,6 +6,7 @@
 
     let src;
     let playing;
+    let audio;
 
     musicStore.subscribe(value => src = value);
     playState.subscribe(value => playing = value);
@@ -19,10 +20,8 @@
                 audio?.pause();
             }
         }
+        playState.set(!audio?.paused)
     })();
-
-    let audio;
-
 </script>
 
 <button class="player" on:click={() => {
@@ -34,7 +33,6 @@ Toggle Music
 <audio
 bind:this = {audio}
 {src}
-autoplay
 loop
 />
 

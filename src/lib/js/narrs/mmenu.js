@@ -1,4 +1,4 @@
-export const menu = {
+export const mmenu = {
     text:`Please enter:<br><br>
     n) New Game<br>
     c) Continue<br>`,
@@ -18,3 +18,14 @@ export const menu = {
     css:`mmenu`,
     music:"src/lib/music/edgar_hopp-gravitated_(royalty_free_music).mp3"
 };
+
+export const start = {
+    text:`Click to Start`,
+    out:{
+        loc:`mmenu`,
+        out:`mmenu`
+    },
+    css:`startscreen`,
+    music:"src/lib/music/edgar_hopp-gravitated_(royalty_free_music).mp3",
+    check:`start`
+}

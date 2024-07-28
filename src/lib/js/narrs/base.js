@@ -1,5 +1,5 @@
 export const base = {
     narr:{
-        ccs:`narr`
+        css:`narr`
     }
 }

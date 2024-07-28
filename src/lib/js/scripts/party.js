@@ -5,4 +5,5 @@ export const newparty = (input) => {
         }
     };
     return(input)
-}
+};
+

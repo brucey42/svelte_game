@@ -1,14 +1,13 @@
 <script>
-    export let uppertext = ``;
-    export let lowertext = ``;
-    export let css = ``;
+    export let uppertext;
+    export let lowertext;
+    export let css;
 
-    const name = "MainWindow";
 </script>
 
 <div id="mainwin" class="mainwin">
-    <div id="upperwindow" class="{css}">
-        <h1>{@html uppertext}</h1>
+    <div id="upperwindow" class="{css}" on:click>
+        {@html uppertext}
     </div>
     <div id="lowerwindow" class="lowerwindow">
         {@html lowertext}
@@ -28,40 +27,63 @@
         margin-bottom: 3%;
         background-color: rgb(0, 0, 0, 0.65);
         color: cyan;
+        font-size: 2.5em
     }
     .lowerwindow {
         border-style: solid;
         border-color: white;
-        height: 20%;
-        overflow: auto;
+        height: 27%;
         display: flex;
         padding-left: 5%;
         align-items: center;
         font-size: 1.5em;
         color: wheat;
+        overflow: auto;
+        font-size: 0.65em;
+    }
+    .startscreen {
+        border-style: solid;
+        border-color: lightgreen;
+        height: 70%;
+        margin-bottom: 1%;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+        padding-right: 5%;
+        font-weight: bold;
+        font-size: 2em;
     }
     .mmenu {
         border-style: solid;
-        border-color: white;
-        height: 75%;
+        border-color: lightgreen;
+        height: 70%;
         margin-bottom: 1%;
         overflow: auto;
         display: flex;
         align-items: center;
-        justify-content: center;
         padding-left: 5%;
         padding-right: 5%;
+        font-weight: bold;
+        font-size: inherit;
+        justify-content:center;
+        flex-direction: column;
     }
     .narr {
         border-style: solid;
-        border-color: white;
-        height: 75%;
+        border-color: cyan;
+        color: white;
+        height: 70%;
         margin-bottom: 1%;
         overflow: auto;
         display: flex;
         align-items: center;
-        justify-content: center;
         padding-left: 5%;
         padding-right: 5%;
+        font-weight: light;
+        font-size: inherit;
+        justify-content: center;
+        flex-direction: column;
     }
 </style>
