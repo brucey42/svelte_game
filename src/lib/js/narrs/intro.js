@@ -4,7 +4,7 @@ export const intro = (out,party) => {
     const intros = {
         intro:{
             ...base.narr,
-            text:`<p>The soft rumble of breaking waves and distant seabird squawking gently breaks your slumber. You groggily blink the sleep from your eyes, familiar trappings of your bedroom swimming into view as the hazy brightness recedes. You shiver slightly, searching hand groping beneath fluttering curtains to push the ajar window shut, closing it with a dull bump and silencing the external ambiance. The mild amusement you feel at falling asleep with it open despite the cold turns rapidly to regret as you extract yourself from the bed covers, shivering, and stretch, skeleton cracking satisfyingly in multiple places</p>`,
+            text:`<p>The soft rumble of breaking waves and distant seabird squawks gently breaks your slumber. You groggily blink the sleep from your eyes, familiar trappings of your bedroom swimming into view as the hazy brightness recedes. Shivering slightly, your searching hand groping beneath fluttering curtains to push the ajar window shut, closing it with a dull bump and silencing the external ambiance. The mild amusement you feel at falling asleep with it open despite the cold turns rapidly to regret as you extract yourself from the bed covers, shaking, and stretch, skeleton cracking satisfyingly in multiple places</p>`,
             choices:`<p>You:<br><br>1) Go outside<br>2) Explore your room</p>`,
             out1:{
                 loc:`intro`,

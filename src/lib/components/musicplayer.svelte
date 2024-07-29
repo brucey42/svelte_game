@@ -13,9 +13,7 @@
     $: (async() => {
         src = music?.narr?.music?.track;
         await audio?.load;
-        if(playing){
-            audio?.play();
-        }
+        playing ? audio?.play() : audio?.pause();
     })();
     $: if(audio){
         audio.volume = music?.narr?.music?.volume ?? 1;
