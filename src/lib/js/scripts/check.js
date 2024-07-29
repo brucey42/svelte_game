@@ -1,7 +1,7 @@
 import { funcs } from "./little_calls";
 
 export const checking = (input) => {
-    const narr = input.narr[`out${input.ask}`];
+    const narr = input.narr[`out${input.ask}`] ?? {};
     switch(`check` in narr){
         case true:
             const check = narr.check;

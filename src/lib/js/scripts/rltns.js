@@ -1,7 +1,7 @@
-export const rltns = (input) => {
-    const narr = input.narr[`out${input.ask}`];
+export const rltns = (input,ask) => {
+    const narr = input.narr[`out${ask}`];
     const rltns = input.party?.mainchar?.rltns;
-    Object.entries(narr.rltns ?? {}).forEach(([ppl,obj]) => {
+    Object.entries(narr?.rltns ?? {}).forEach(([ppl,obj]) => {
         Object.entries(obj).forEach(([scn,scr]) => {
             ppl in rltns ? rltns[ppl][scn] = scr : rltns[ppl] = {[scn]:scr};
         });
@@ -9,8 +9,8 @@ export const rltns = (input) => {
     return(input);
 };
 
-export const undo = (input) => {
-    const narr = input.narr[`out${input.ask}`];
+export const undo = (input,ask) => {
+    const narr = input.narr[`out${ask}`];
     const rltns = input.party.mainchar.rltns;
     Object.entries(narr.rltns ?? {}).forEach(([ppl,obj]) => {
         Object.keys(obj).forEach(scn => {

@@ -1,69 +1,95 @@
 <script>
     import Mainwindow from "./mainwindow.svelte";
-    import { musicStore } from '../js/scripts/store';
-    import { playState } from "../js/scripts/store";
-
+    import { playState,gameState } from '../js/scripts/store';
+    
     import { onMount } from "svelte";
-    import { cycle } from '../js/scripts/mainjs';
-    import { reset } from "../js/scripts/little_calls";
+    import { reset,cheeky } from "../js/scripts/little_calls";
+    import { checking } from "../js/scripts/check";
+    import { rltns } from "../js/scripts/rltns";
 
-    import { start } from "../js/narrs/mmenu";
+    import { narrs } from '../js/narrs/narrs';
 
     let playerin;
 
-    let input = {
-        narr:start
-    };
+    let input;
+    let spare;
 
-    $: uppertext = input.narr.text;
-    $: lowertext = input.narr.choices ?? ``;
-    $: css = input.narr.css
-    $: musicStore.set(input.narr.music);
-
-    let musiccheck;
-    
-    playState.subscribe(value => musiccheck = value);
+    gameState.subscribe(value => input = value);
 
     const choose = (choice) => {
-        choice = choice ?? ``;
-        input = cycle(input,choice);
+        ((thing) => {
+            thing.ask = choice;
+            const out = thing.narr[`out${choice}`] ?? ``;
+            switch(choice){
+                default:
+                    console.log(out);
+                    switch(out){
+                        case ``:
+                            input.narr.text = cheeky(spare);
+                            gameState.set(input);
+                            break;
+                        default:
+                            input = checking(input);
+                            input = rltns(input);
+                            input.narr = narrs(out.loc,out.out,input.party);
+                            gameState.set(input);
+                            spare = input.narr.text;
+                            break;
+                    }
+            }
+        })(input);
         reset(`mainin`);
     };
     
     const click_check = () => {
-        switch(input.narr.check){
+        switch(input?.narr?.click){
             case `start`:
                 choose(``);
                 playState.set(true);
                 document.getElementById(`mainin`).focus();
-                break;
+                return(true);
+            default:
+                return(false);
         }
     };
 
     onMount(() => {
-        const storage = JSON.parse(sessionStorage.getItem(`input`));
-        switch(storage){
+        switch(input){
             case null:
-            document.getElementById(`mainin`).focus();
+                gameState.set({
+                    narr:narrs(`start`)
+                })
+                document.getElementById(`mainin`).focus();
+                break;
         }
     });
 </script>
 
-<Mainwindow {uppertext} {lowertext} {css} on:click={click_check} />
+<Mainwindow on:click={click_check} on:keyup={key => key.toLowerCase() == `enter` ? click_check() : ``} />
 
-<div id="inputBox" class="inputBox">
-    <div id="inputText" class="inputText">
-        Your Input:
+<div
+id="inputBox"
+class="inputBox">
+    <div
+    id="inputText"
+    class="inputText">
+        Input:
     </div>
-    <input id="mainin" type="text"
+
+    <input
+    id="mainin"
+    type="text"
     bind:value={playerin}
     on:keyup={
-        (key) => key.key.toLowerCase() == `enter` ? (() => {
-            choose(playerin?.toLowerCase() ?? ``);
-        })() : ``} />
-    <button id="playersub" class="playersub" type="submit" on:click={() => {
-        choose(playerin?.toLowerCase() ?? ``);
-        reset(`mainin`);
+        (key) => key.key.toLowerCase() == `enter` ? 
+        click_check() ? `` : choose(playerin?.toLowerCase() ?? ``) : ``} />
+
+    <button
+    id="playersub"
+    class="playersub"
+    type="submit"
+    on:click={() => {
+        click_check() ? `` : choose(playerin?.toLowerCase() ?? ``)
     }}>
         Submit
     </button>
@@ -83,24 +109,26 @@
         margin-left: auto;
     }
     .inputText {
-        width: 7%;
+        width: 5%;
         height: inherit;
         float: left;
-        font-size: inherit;
+        font-size: 1em;
         display: flex;
         align-items: center;
-        padding-left: 0.45%;
+        padding-left: 0.4%;
+        box-sizing: border-box;
     }
     input[type=text] {
         background-color: black;
-        border-width: 1%;
         border-style: solid;
         border-color: white;
-        width: 86%;
-        height: 90%;
+        border-width: 1%;
+        width: 89%;
+        height: 108%;
         color: white;
         font-size: inherit;
         float: left;
+        box-sizing: border-box;
     }
     button[type=submit] {
         vertical-align: middle;

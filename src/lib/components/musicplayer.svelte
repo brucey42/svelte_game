@@ -1,47 +1,30 @@
 <script>
-    export const name = `MusicPlayer`;
-    
-    import { musicStore } from "../js/scripts/store";
-    import { playState } from "../js/scripts/store";
+    import { gameState,playState } from "../js/scripts/store";
 
+    let music;
     let src;
     let playing;
     let audio;
 
-    musicStore.subscribe(value => src = value);
+    gameState.subscribe(value => music = value);
+
     playState.subscribe(value => playing = value);
 
-    $: (() => {
-        if(src){
-            if(playing){
-                audio?.play();
-            }
-            else{
-                audio?.pause();
-            }
+    $: (async() => {
+        src = music?.narr?.music?.track;
+        await audio?.load;
+        if(playing){
+            audio?.play();
         }
-        playState.set(!audio?.paused)
     })();
+    $: if(audio){
+        audio.volume = music?.narr?.music?.volume ?? 1;
+    }
+    $: playing ? audio?.play() : audio?.pause();
 </script>
-
-<button class="player" on:click={() => {
-    playing ? playState.set(false) : playState.set(true);
-}}>
-Toggle Music
-</button>
 
 <audio
 bind:this = {audio}
 {src}
 loop
 />
-
-<style>
-    button {
-        margin-top: 2%;
-        float: right;
-        width: 3%;
-        height: 3%;
-        background-color: darkgreen;
-    }
-</style>

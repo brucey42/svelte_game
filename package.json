@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"git-filter-repo": "^0.0.30",
 		"svelte-sound": "^0.6.0"
 	}
 }

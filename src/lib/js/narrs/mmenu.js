@@ -16,7 +16,10 @@ export const mmenu = {
         out:`intro`
     },
     css:`mmenu`,
-    music:"src/lib/music/edgar_hopp-gravitated_(royalty_free_music).mp3"
+    music:{
+        track:"src/lib/music/edgar_hopp-gravitated_(royalty_free_music).mp3",
+        volume:1
+    }
 };
 
 export const start = {
@@ -26,6 +29,9 @@ export const start = {
         out:`mmenu`
     },
     css:`startscreen`,
-    music:"src/lib/music/edgar_hopp-gravitated_(royalty_free_music).mp3",
-    check:`start`
+    click:`start`,
+    music:{
+        track:"src/lib/music/edgar_hopp-gravitated_(royalty_free_music).mp3",
+        volume:1
+    }
 }
