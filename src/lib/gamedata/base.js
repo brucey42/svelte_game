@@ -1,4 +1,4 @@
 export const base = [
-    //price, base_stat, min
-    [10,5,6]
+    //level, price, base_stat, min
+    [1, 10, 5, 6]
 ]

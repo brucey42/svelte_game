@@ -22,7 +22,6 @@
             const out = thing.narr[`out${choice}`] ?? ``;
             switch(choice){
                 default:
-                    console.log(out);
                     switch(out){
                         case ``:
                             input.narr.text = cheeky(spare);
@@ -68,29 +67,28 @@
 <Mainwindow on:click={click_check} on:keyup={key => key.toLowerCase() == `enter` ? click_check() : ``} />
 
 <div
-id="inputBox"
-class="inputBox">
+    id="inputBox"
+    class="inputBox">
     <div
     id="inputText"
     class="inputText">
         Input:
     </div>
-
     <input
     id="mainin"
     type="text"
     bind:value={playerin}
     on:keyup={
         (key) => key.key.toLowerCase() == `enter` ? 
-        click_check() ? `` : choose(playerin?.toLowerCase() ?? ``) : ``} />
-
+        click_check() ? `` : choose(playerin?.toLowerCase() ?? ``) : ``
+        } />
     <button
     id="playersub"
     class="playersub"
     type="submit"
     on:click={() => {
         click_check() ? `` : choose(playerin?.toLowerCase() ?? ``)
-    }}>
+        }}>
         Submit
     </button>
 </div>

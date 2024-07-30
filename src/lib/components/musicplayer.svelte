@@ -10,15 +10,16 @@
 
     playState.subscribe(value => playing = value);
 
-    $: (async() => {
+    $: {
         src = music?.narr?.music?.track;
-        await audio?.load;
-        playing ? audio?.play() : audio?.pause();
-    })();
+        (async () => {
+            await audio?.load;
+            playing ? audio?.play() : audio?.pause();
+        })();
+    } 
     $: if(audio){
         audio.volume = music?.narr?.music?.volume ?? 1;
     }
-    $: playing ? audio?.play() : audio?.pause();
 </script>
 
 <audio

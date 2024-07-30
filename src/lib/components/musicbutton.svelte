@@ -5,7 +5,7 @@
 </script>
 
 <button class="player" on:click={() => {
-    playing ? playState.set(false) : playState.set(true);
+    playState.set(!playing);
 }}>
 Toggle Music
 </button>

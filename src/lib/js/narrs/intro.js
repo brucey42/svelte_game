@@ -265,7 +265,7 @@ export const intro = (out,party) => {
             
             <p>"I believe she is acting for my benefit."</p>
             
-            <p>You turn to regard the alcove just behind the base of the stairs - the balustrade of which having initially obscured your view - to observe your "guest"; though his top hat is so tall you struggle to understand how you missed its pinnacle on your way down despite the occlusion. "Who are you?" you ask, before he can continue.</p>
+            <p>You turn to regard the alcove just behind the base of the stairs - the balustrade of which having initially obscured your view - and face your "guest"; though his top hat is so tall you struggle to understand how you missed its pinnacle on your way down, despite the occlusion. "Who are you?" you ask, before he can continue.</p>
             
             <p>Samantha opens her mouth, no doubt to scold you for being rude, but the stranger speaks first, standing and adjusting his purple waistcoat as he does so. He is tall and slender, and younger than one might assume for someone so formally dressed. "I am the Count d'Salamander," he says, flatly, before flamboyantly removing his hat in a sweeping bow, "and I am at your service."</p>`,
             choices:`<p>You stare, bemused, at the crown of a perfect bowl of silver hair:<br><br>1) Apologise<br>2) Wait for him to continue<br>3) Ask him to leave, politely</p>`,
