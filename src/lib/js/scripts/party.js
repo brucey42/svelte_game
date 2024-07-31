@@ -27,7 +27,41 @@ const name = (words) => {
     return(`Please enter your ${words} name:`)
 }
 
-export const mainchargen = (out) => {
+export const stat = (party,char) => {
+    char = party?.[char] ?? {};
+    let out = `<p>Please wildly exaggerate your abilities:<br><br>Current:</p><p>`;
+    const stats = {
+        str:`Strength`,
+        chr:`Charisma`,
+        end:`Endurance`,
+        int:`Intelligence`,
+        sbn:`Stubbornness`,
+        wis:`Wisdom`,
+        agl:`Agility`,
+        fcs:`Focus`,
+        dex:`Dexterity`,
+        per:`Perception`,
+        grc:`Grace`,
+        lck:`Luck`
+    };
+    Object.keys(stats).forEach((ii,i) => {
+        `stats` in char ? ii in char.stats ? `` : char.stats[ii] = 1 : char.stats = {[ii]:1,
+            points:35
+        };
+        switch(`${(i/2).toFixed(1)}`.split(`.`)[1]){
+            case 0:
+                out += `${stats[key]} (${key}):&nbsp;&nbsp;${char.stats[key]}&nbsp;&nbsp;&nbsp;&nbsp;`
+                break
+            case 5:
+                out += `${stats[key]} (${key}):&nbsp;&nbsp;${char.stats[key]}<br>`
+                break;
+        }
+    });
+    out + `</p><br><p>Remaining:&nbsp;&nbsp;${char.stats.points}</p>`
+    return(out);
+};
+
+export const mainchargen = (out,party) => {
     const outs = {
         first:{
             text:name(`first`),
@@ -69,6 +103,24 @@ export const mainchargen = (out) => {
             },
             what:{
                 lname:`party.mainchar.profile`
+            },
+            css:`chargen`,
+            click:`chargen`
+        },
+        statgen:{
+            text:stat(party,`mainchar`),
+            out:{
+                check:{
+                    sb:`stat`,
+                    param:{
+                        points:0
+                    },
+                    specs:{
+                        true:{
+
+                        },
+                    }
+                }
             },
             css:`chargen`,
             click:`chargen`
