@@ -122,6 +122,7 @@ export const intro = (out,party) => {
             },
             out2:{
                 check:{
+                    sub:``,
                     param:{
                         profile:`mainchar`
                     },
@@ -435,7 +436,7 @@ export const intro = (out,party) => {
         },
         bedroom_char:{
             ...base.narr,
-            text:`The simple act of getting dressed has made you feel much more yourself.${`samantha` in (party?.mainchar?.rltns ?? {}) ? `salamander` in (party?.mainchar?.rltns ?? {}) ? ` You probably shouldn't keep Samantha and The Count waiting.` : ` You probably shouldn't keep Samantha waiting.` : ` Now that you're dressed, there isn't much more to do here.`} With one last look around, you leave.`,
+            text:`The simple act of getting dressed has made you feel much more yourself.${`samantha` in (party?.mainchar?.rltns ?? {}) ? `salamander` in (party?.mainchar?.rltns ?? {}) ? ` You probably shouldn't keep Samantha and The Count waiting.` : ` You probably shouldn't keep Samantha waiting.` : ` Now that you're done, there isn't much more to do here.`} With one last look around, you leave.`,
             out:{
                 loc:`intro`,
                 out:`hallway`

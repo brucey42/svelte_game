@@ -61,7 +61,7 @@ const cn = (input) => {
         let specs = ``;
         switch(check.sb){
             case `stat`:
-                specs = prefix[input.party[quid].stats[check.stat] [Number(op)] [Number(quo)]];
+                specs = prefix[input.party[quid].stats[check.stat] (Number(op)) (Number(quo))];
                 break;
             default:
                 let thing = input[check.loc ?? `party`][quo];

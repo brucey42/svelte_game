@@ -8,31 +8,18 @@ export const newparty = (input) => {
 };
 
 export const add = (input) => {
-    switch(input.hold.length){
-        case 0:
-            input.text = `I would imagine you've got a name - ${input.spare}`,
-            input.out.out = input.rep.out,
-            input.out.loc = input.rep.loc
-            break;
-        default:
-            let ref = input;
-            const what = input.narr.what;
-            Object.keys(what).forEach(thing => {
-                let split = what[thing].split(`,`);
-                split.forEach((ii) => {
-                    switch(ii in ref){
-                        case false:
-                            ref[ii] = {};
-                        default:
-                            ref = ref[ii];
-                            break;
-                    }
-                });
-                ref[thing] = input.hold;
-            });
-            delete input.hold;
-            input.spare = input.text;
-        }
+    let ref = input;
+    const what = input.narr.what;
+    Object.keys(what).forEach(thing => {
+        let split = what[thing].split(`.`);
+        split.forEach(ii => {
+            ii in ref ? `` : ref[ii] = {};
+            ref = ref[ii];
+        });
+        ref[thing] = input.hold;
+    });
+    delete input.hold;
+    input.spare = input.text;
     return(input);
 };
 
