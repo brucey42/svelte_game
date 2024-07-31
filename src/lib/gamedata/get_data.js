@@ -10,7 +10,7 @@ class Base{
         this.id = id
         this.name = name
     }
-}
+};
 
 class Weapon extends Base{
     constructor(id,name,price,level,profile,dam,hands,stat1,stat2,min,acc,spd,base){
@@ -27,7 +27,7 @@ class Weapon extends Base{
         this.spd = spd
         this.base = base
     }
-}
+};
 
 Object.keys(dict).forEach(thing => {
     dict[thing].masters.forEach(item => {
@@ -53,5 +53,5 @@ Object.keys(dict).forEach(thing => {
                 )
                 break;
         }
-    })
-})
+    });
+});

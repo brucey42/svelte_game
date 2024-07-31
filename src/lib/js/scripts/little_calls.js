@@ -1,4 +1,6 @@
 import { newparty } from "./party";
+import { mainchargen } from "./party";
+import { add } from "./party";
 
 export const reset = (input) => {
     document.getElementById(`${input}`).value = ``;
@@ -17,5 +19,7 @@ export const cheeky = (input) => {
 };
 
 export const funcs = {
-    newparty:newparty
+    newparty:newparty,
+    mainchargen:mainchargen,
+    add:add
 };

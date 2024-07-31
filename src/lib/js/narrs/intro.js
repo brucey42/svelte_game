@@ -413,19 +413,35 @@ export const intro = (out,party) => {
                 out:`hallway`
             },
             out2:{
+                sub:``,
                 loc:`intro`,
                 out:`bedroom_char`,
                 check:{
-                    type:`in`,
-                    is:false,
-                    mod:`party`,
-                    func:`mainchargen`,
                     param:{
                         profile:`mainchar`
+                    },
+                    specs:{
+                        false:{
+                            out:`first`,
+                            loc:`mainchargen`
+                        },
+                        true:{
+                            out:`bedroom_char`,
+                            loc:`intro`
+                        }
                     }
                 }
             }
+        },
+        bedroom_char:{
+            ...base.narr,
+            text:`The simple act of getting dressed has made you feel much more yourself.${`samantha` in (party?.mainchar?.rltns ?? {}) ? `salamander` in (party?.mainchar?.rltns ?? {}) ? ` You probably shouldn't keep Samantha and The Count waiting.` : ` You probably shouldn't keep Samantha waiting.` : ` Now that you're dressed, there isn't much more to do here.`} With one last look around, you leave.`,
+            out:{
+                loc:`intro`,
+                out:`hallway`
+            },
+            click:`cont`
         }
-    }
+    };
     return(intros[out]);
 }

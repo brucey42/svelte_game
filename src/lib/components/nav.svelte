@@ -24,3 +24,22 @@
     |
     <a href="/char">&nbsp;&nbsp;Character&nbsp;&nbsp;</a>
 </nav>
+
+<style>
+    nav {
+        display: flex;
+        font-size: 2em;
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+        align-items: center;
+        margin-bottom: 2.0%;
+        word-spacing: 0.25em;
+        justify-content: center;
+        color: black;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+</style>

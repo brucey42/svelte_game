@@ -102,4 +102,22 @@
         box-sizing: border-box;
         overflow: auto;
     }
+    .chargen {
+        border-style: double;
+        border-color: cyan;
+        color: white;
+        height: 70%;
+        margin-bottom: 1%;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        padding-left: 5%;
+        padding-right: 5%;
+        font-weight: light;
+        font-size: 2em;
+        justify-content: center;
+        flex-direction: column;
+        box-sizing: border-box;
+        overflow: auto;
+    }
 </style>

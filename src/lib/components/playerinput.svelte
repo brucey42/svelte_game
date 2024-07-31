@@ -12,11 +12,13 @@
     let playerin;
 
     let input;
-    let spare;
 
-    gameState.subscribe(value => input = value);
+    const gunsub = gameState.subscribe(value => {
+        input = value
+    });
 
     const choose = (choice) => {
+        reset(`mainin`);
         ((thing) => {
             thing.ask = choice;
             const out = thing.narr[`out${choice}`] ?? ``;
@@ -24,28 +26,47 @@
                 default:
                     switch(out){
                         case ``:
-                            input.narr.text = cheeky(spare);
+                            input.narr.text = cheeky(input.spare);
                             gameState.set(input);
                             break;
                         default:
                             input = checking(input);
                             input = rltns(input);
                             input.narr = narrs(out.loc,out.out,input.party);
-                            gameState.set(input);
-                            spare = input.narr.text;
+                            gameState.set(input)
+                            input.spare = input.narr.text;
                             break;
                     }
             }
+            playerin = ``;
         })(input);
-        reset(`mainin`);
     };
     
     const click_check = () => {
         switch(input?.narr?.click){
             case `start`:
-                choose(``);
                 playState.set(true);
                 document.getElementById(`mainin`).focus();
+            case `cont`:
+                choose(``);
+                return(true);
+            case `chargen`:
+                input.hold = playerin;
+                let drop = ``;
+                switch(playerin.length > 0){
+                    case false:
+                        drop = `nope`;
+                    default:
+                        switch(`${Number(playerin)}`){
+                            case `NaN`:
+                                break;
+                            default:
+                                drop = `nope`;
+                                break;
+                        }
+                        break;
+                }
+                choose(drop);
                 return(true);
             default:
                 return(false);
@@ -64,7 +85,9 @@
     });
 </script>
 
-<Mainwindow on:click={click_check} on:keyup={key => key.toLowerCase() == `enter` ? click_check() : ``} />
+<Mainwindow on:click={() => {
+    input?.narr?.click == `start` ? click_check() : ``;
+}} on:keyup={key => key.toLowerCase() == `enter` ? input?.narr?.click == `start` ? click_check() : `` : ``} />
 
 <div
     id="inputBox"

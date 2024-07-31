@@ -18,18 +18,17 @@ export const checking = (input) => {
                                 }
                                 break;
                             default:
-                                switch(quid in input[check.loc ?? `party`][quo]){
-                                    case check.is:
-                                        bool = true;
-                                        break;
-                                }
+                                let ref = input;
+                                let split = quo.split(`,`)
+                                split.forEach((ii) => {
+                                    ref = ref?.[ii]
+                                });
+                                bool = quid in (ref?.[quo] ?? {}) == check.is;
                                 break;
                         }
-                        switch(bool){
-                            case true:
-                                funcs[check.func](input);
-                                check.checks?.forEach(item => `scheck` in narr ? narr.scheck.push(item) : narr.scheck = [item]);
-                                break;
+                        if(bool){
+                            funcs[check.func](input);
+                            check.checks?.forEach(item => `scheck` in narr ? narr.scheck.push(item) : narr.scheck = [item]);
                         }
                     });
                     break;
